@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Profile = mongoose.model("profiles");
 
 const profileRoutes = (app) => {
+
+  app.get(`/`, async (req, res) => {
+    return res.status(200).send('Test different endpoints');
+  });
+
   app.get(`/api/profile`, async (req, res) => {
     const profiles = await Profile.find();
 
