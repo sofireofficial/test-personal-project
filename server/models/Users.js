@@ -11,4 +11,4 @@ const userSchema = new Schema({
     seeking: String,
 });
 
-mongoose.model("userDatabase", userSchema);
+mongoose.model("users", userSchema);

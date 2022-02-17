@@ -6,5 +6,11 @@ const getAllUsers = async () => {
   return response.data || [];
 };
 
+const getAllUsersByLocation = async (location) => {
+  const response = await axios.get(`/api/user/${location}`);
+
+  return response.data || [];
+};
+
 // All of the endpoints in this file can be exported below
-export { getAllUsers };
+export { getAllUsers, getAllUsersByLocation };
