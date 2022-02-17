@@ -4,12 +4,14 @@ const Profile = mongoose.model("profiles");
 const profileRoutes = (app) => {
 
   app.get(`/`, async (req, res) => {
+    console.log('visiting "/" endpoint')
     return res.status(200).send('Test different endpoints');
+
   });
 
   app.get(`/api/profile`, async (req, res) => {
     const profiles = await Profile.find();
-
+    console.log('visiting "/api/profile" endpoint')
     return res.status(200).send(profiles);
   });
 
