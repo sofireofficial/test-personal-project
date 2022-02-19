@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import Search from "./Components/Search";
-
 // SERVICES THAT CALL OUR API ENDPOINTS
 // BELOW COMMUNICATES WITH SERVER
-import { getAllProfiles } from "./services/profileService";
+import { getAllMatchmakers } from "./services/matchmakerService";
 import { getAllUsers, getAllUsersByLocation } from "./services/userService";
+import handLogo from "./Images/handLogo.png";
 
 function App() {
 
   // const [filter, setFilter] = useState('all');
-  const [profiles, setProfiles] = useState(null);
+  const [matchmakers, setMatchmakers] = useState(null);
   const [users, setUsers] = useState(null);
 
   async function getLocation(location) {
@@ -20,10 +20,10 @@ function App() {
 
 
   useEffect(() => {
-    async function getProfiles() {
-      if (!profiles) {
-        const response = await getAllProfiles();
-        setProfiles(response);
+    async function getMatchmakers() {
+      if (!matchmakers) {
+        const response = await getAllMatchmakers();
+        setMatchmakers(response);
       }
     }
     async function getUsers() {
@@ -33,18 +33,18 @@ function App() {
       }
     }
 
-    getProfiles(); //use elsewhere
+    getMatchmakers(); //use elsewhere
     getUsers();
-  }, [profiles]);
+  }, [matchmakers]);
 
-  const renderProfile = (user) => { //returns JSX markup
+  const renderMatchmaker = (matchmaker) => { //returns JSX markup
     return (
-      <li key={user._id}>
+      <li key={matchmaker._id}>
         <h3>
-          {`${user.team_name}`} 
+          {`${matchmaker.matchmaker_name}`} 
         </h3>
-        <p>TEAM {user.location.toUpperCase()}</p>
-        <button onClick={() => getLocation(user.location)}>Explore</button>
+        <p>{`(${matchmaker.location} based)`}</p>
+        <button onClick={() => getLocation(matchmaker.location)}>Singles</button>
       </li>
     );
   };
@@ -53,9 +53,10 @@ function App() {
   return (
     <div>
     <Search />
+    <div><img src={handLogo} alt="couple holding hands" width="25%"></img></div>
     <button style={{backgroundColor:"rgb(160, 7, 7)"}}>all users</button>
     {users && users.length > 0 ? (
-            <h2>{users.map((user) => { return user.first_name + " " + user.last_name})}</h2>
+            <h2>{users.map((user) => { return `${user.first_name} ${user.last_name}`})}</h2>
 ) : (
           <p>No users found</p>
         )}   
@@ -65,12 +66,12 @@ function App() {
         <h1>Matchmaker <br />Hub</h1>        
 
     </div>
-      <ul className="profiles">
-        {profiles && profiles.length > 0 ? (
+      <ul className="matchmakers">
+        {matchmakers && matchmakers.length > 0 ? (
           // profiles.filter((profile) => profile.team_name === 'Cupid' ).map((profile) => renderProfile(profile))
-          profiles.map((profile) => renderProfile(profile))
+          matchmakers.map((matchmaker) => renderMatchmaker(matchmaker))
         ) : (
-          <p>No profiles found</p>
+          <p>No Matchmakers found</p>
         )}      
       </ul>
     </div>
