@@ -5,7 +5,8 @@ import Search from "./Components/Search";
 // BELOW COMMUNICATES WITH SERVER
 import { getAllMatchmakers } from "./services/matchmakerService";
 import { getAllUsers, getAllUsersByLocation } from "./services/userService";
-import handLogo from "./Images/handLogo.png";
+import Title from "./Components/Title"
+import LogoPic from "./Components/LogoPic";
 
 function App() {
 
@@ -41,10 +42,10 @@ function App() {
     return (
       <li key={matchmaker._id}>
         <h3>
-          {`${matchmaker.matchmaker_name}`} 
+          {`${matchmaker.matchmaker_name.toUpperCase()}`} 
         </h3>
         <p>{`(${matchmaker.location} based)`}</p>
-        <button onClick={() => getLocation(matchmaker.location)}>Singles</button>
+        <button style={{borderColor:"rgb(160, 7, 7)"}} onClick={() => getLocation(matchmaker.location)}>Singles</button>
       </li>
     );
   };
@@ -52,20 +53,31 @@ function App() {
 
   return (
     <div>
-    <Search />
-    <div><img src={handLogo} alt="couple holding hands" width="25%"></img></div>
-    <button style={{backgroundColor:"rgb(160, 7, 7)"}}>all users</button>
-    {users && users.length > 0 ? (
-            <h2>{users.map((user) => { return `${user.first_name} ${user.last_name}`})}</h2>
+
+      <div className="App-header">
+        <Title />
+      </div>
+
+      <div className="App-header2">
+        <LogoPic /> 
+      </div>
+
+      <div>
+        <button style={{backgroundColor:"rgb(160, 7, 7)"}}>alllll users<br /></button>
+        <Search />
+        <br />
+      </div>
+
+    <div className="displayUsers">{users && users.length > 0 ? (
+            <h2>{users.map((user) => { return `${user.first_name} ${user.last_name.toUpperCase()} `})}</h2>
 ) : (
           <p>No users found</p>
-        )}   
+        )} 
+      </div>
     {/* onClick={() => setFilter('London')  */}
     {/* onClick={users.map((user) => renderUser(user)} */}
-    <div className="App-header">
-        <h1>Matchmaker <br />Hub</h1>        
-
-    </div>
+   
+   <div>
       <ul className="matchmakers">
         {matchmakers && matchmakers.length > 0 ? (
           // profiles.filter((profile) => profile.team_name === 'Cupid' ).map((profile) => renderProfile(profile))
@@ -74,6 +86,8 @@ function App() {
           <p>No Matchmakers found</p>
         )}      
       </ul>
+      </div>
+
     </div>
   );
 }
