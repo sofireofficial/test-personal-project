@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import Search from "./Components/Search";
+
 // SERVICES THAT CALL OUR API ENDPOINTS
 // BELOW COMMUNICATES WITH SERVER
 import { getAllMatchmakers } from "./services/matchmakerService";
@@ -78,6 +79,22 @@ function App() {
     {/* onClick={users.map((user) => renderUser(user)} */}
    
    <div>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
+      <p>scroll ↓</p>
       <ul className="matchmakers">
         {matchmakers && matchmakers.length > 0 ? (
           // profiles.filter((profile) => profile.team_name === 'Cupid' ).map((profile) => renderProfile(profile))
@@ -86,6 +103,7 @@ function App() {
           <p>No Matchmakers found</p>
         )}      
       </ul>
+
       </div>
 
     </div>
