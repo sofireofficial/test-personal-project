@@ -37,11 +37,11 @@ function App() {
 
     getMatchmakers(); //use elsewhere
     getUsers();
-  }, [matchmakers]);
-
+  }, [matchmakers, users]); //******* code from Michael  
+  
   const renderMatchmaker = (matchmaker) => { //returns JSX markup
     return (
-      <li key={matchmaker._id}>
+      <li className="tester" key={matchmaker._id}>
         <h3>
           {`${matchmaker.matchmaker_name.toUpperCase()}`} 
         </h3>
