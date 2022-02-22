@@ -5,9 +5,10 @@ import Search from "./Components/Search";
 // SERVICES THAT CALL OUR API ENDPOINTS
 // BELOW COMMUNICATES WITH SERVER
 import { getAllMatchmakers } from "./services/matchmakerService";
-import { getAllUsers, getAllUsersByLocation } from "./services/userService";
+import { getAllUsersByLocation } from "./services/userService";
 import Title from "./Components/Title"
 import LogoPic from "./Components/LogoPic";
+import Matchmaker from "./Components/Matchmaker";
 
 function App() {
 
@@ -21,35 +22,17 @@ function App() {
   }
 
 
-  useEffect(() => {
+  useEffect(() => { //see as a side effect (once app.js renders)
     async function getMatchmakers() {
       if (!matchmakers) {
         const response = await getAllMatchmakers();
         setMatchmakers(response);
       }
     }
-    async function getUsers() {
-      if (!users) {
-        const response = await getAllUsers();
-        setUsers(response)
-      }
-    }
-
-    getMatchmakers(); //use elsewhere
-    getUsers();
-  }, [matchmakers, users]); //******* code from Michael  
   
-  const renderMatchmaker = (matchmaker) => { //returns JSX markup
-    return (
-      <li className="tester" key={matchmaker._id}>
-        <h3>
-          {`${matchmaker.matchmaker_name.toUpperCase()}`} 
-        </h3>
-        <p>{`(${matchmaker.location} based)`}</p>
-        <button style={{borderColor:"rgb(160, 7, 7)"}} onClick={() => getLocation(matchmaker.location)}>Singles</button>
-      </li>
-    );
-  };
+    getMatchmakers(); //(fetches matchmaker!!!!!!!!) use elsewhere
+  }, [matchmakers]);    
+
 
 
   return (
@@ -69,12 +52,14 @@ function App() {
         <br />
       </div>
 
-    <div className="displayUsers">{users && users.length > 0 ? (
-            <h2>{users.map((user) => { return `${user.first_name} ${user.last_name.toUpperCase()} `})}</h2>
+{/* Andy's help!! Whoop whoop*/}
+    {users != null ? (<div className="displayUsers">{users.length > 0 ? (
+            <ul>{users.map((user) => { return <li>{user.first_name} {user.last_name.toUpperCase()}</li>})}</ul>
 ) : (
           <p>No users found</p>
         )} 
-      </div>
+      </div>) : null}
+    
     {/* onClick={() => setFilter('London')  */}
     {/* onClick={users.map((user) => renderUser(user)} */}
    
@@ -98,7 +83,7 @@ function App() {
       <ul className="matchmakers">
         {matchmakers && matchmakers.length > 0 ? (
           // profiles.filter((profile) => profile.team_name === 'Cupid' ).map((profile) => renderProfile(profile))
-          matchmakers.map((matchmaker) => renderMatchmaker(matchmaker))
+          matchmakers.map((matchmaker) => <Matchmaker matchmaker={matchmaker} getLocation={getLocation} />)
         ) : (
           <p>No Matchmakers found</p>
         )}      
