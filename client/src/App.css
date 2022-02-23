@@ -4,15 +4,24 @@ body {
   background-color: blue;
 }
 
+.container {
+  background-color: green;
+  height: 100vh;
+}
+
 .matchmakers {
   /* background-color: rgba(245, 157, 157, 0.904); */
-  background-color: yellow;
+  background-color: black;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /* position: absolute;  */
-  bottom: 0;
-
+  position: fixed; 
+  top: 60%;
+  height: auto;
+  min-height: 60vh;;
+  max-height: 45vh;
+  overflow-y: auto;
+  width: 100vw;
   /* below is for wider screens!!! */
   /* display: flex;
   flex: 1;
@@ -37,14 +46,16 @@ body {
 }
 
 .App-header {
-   background-color: white;
-   background-image: url(./Images/hearts.png);
-   background-position: center;
+  background-color: white;
+  background-image: url(./Images/hearts.png);
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
   width: 100%;
-  height: 20vh;
+  height: 20%;
+  min-height: 20%;
+  max-height: 20%;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -55,12 +66,18 @@ body {
 
 .App-header2 {
 position:fixed; 
-top:20vh;
+top:20%;
 width: 100%;
-  height: 20vh;
+  height: 20%;
+  min-height: 20%;
+  max-height: 20%;
   z-index: 1;
   align-items: center;
   justify-content: center;
+}
+
+.button {
+  height: 5%;
 }
 
 .App-link {
@@ -82,7 +99,8 @@ width: 100%;
     line-height: 2em;
     text-align: center;
     width: 55%;
-    max-height: 15%;
+    max-height: 50%;
+    height: 20%;
     overflow: auto;
     top: 60vh;
     float: center;    /* left: 50%; */
@@ -90,6 +108,11 @@ width: 100%;
     align-items: center;
     left: 50%;
     right: auto;
+}
+
+.copyright {
+  position: fixed;
+  bottom: 0;
 }
 
 @keyframes App-logo-spin {

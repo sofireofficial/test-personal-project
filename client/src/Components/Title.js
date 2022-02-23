@@ -3,7 +3,7 @@ import React from 'react';
 const Title = () => {
     return (
     <div className="App-header">
-    <h1 style={{fontSize:"60px"}}>
+    <h1 style={{fontSize:"3em"}}>
         <span style={{color:"black"}}>M</span>
         <span style={{color:"rgb(160, 7, 7)"}}>ATCH</span>
         <span style={{color:"black"}}>M</span>

@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div>
-
+    <div className="container">
       <div className="App-header">
         <Title />
       </div>
@@ -46,7 +46,7 @@ function App() {
         <LogoPic /> 
       </div>
 
-      <div>
+      <div className="button">
         <button style={{backgroundColor:"rgb(160, 7, 7)"}}>alllll users<br /></button>
         <Search />
         <br />
@@ -62,24 +62,8 @@ function App() {
     
     {/* onClick={() => setFilter('London')  */}
     {/* onClick={users.map((user) => renderUser(user)} */}
-   
-   <div>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
-      <p>scroll ↓</p>
+  
+    <div>
       <ul className="matchmakers">
         {matchmakers && matchmakers.length > 0 ? (
           // profiles.filter((profile) => profile.team_name === 'Cupid' ).map((profile) => renderProfile(profile))
@@ -88,9 +72,12 @@ function App() {
           <p>No Matchmakers found</p>
         )}      
       </ul>
-
       </div>
 
+      <div className="copyright">
+      <p>Ⓒ Sophia Johnson</p>
+      </div>
+    </div>
     </div>
   );
 }
