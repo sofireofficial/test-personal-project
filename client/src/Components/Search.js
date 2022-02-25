@@ -25,7 +25,7 @@ const onSubmit = (event) => {
         <div>
             <form id="searchProfiles" onSubmit={onSubmit}>
                 <input id="term" type="text" value={searching} 
-                    onChange={changeInput} placeholder="search profiles here..." 
+                    onChange={changeInput} placeholder="search here..." 
                     name="searchBar"/>
                 <button type="submit">search</button> 
                 {shouldDisplayX && <button onClick={clearing}>x</button>}

@@ -1,48 +1,14 @@
 body {
-  text-align: center;
-  /* background-color: rgba(252, 222, 222, 0.904); */
+  text-align: center !important;
   background-color: blue;
+  align-items: center;
 }
 
 .container {
-  background-color: green;
+  background-color: rgb(160, 7, 7);
   height: 100vh;
-}
-
-.matchmakers {
-  /* background-color: rgba(245, 157, 157, 0.904); */
-  background-color: black;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: fixed; 
-  top: 60%;
-  height: auto;
-  min-height: 60vh;;
-  max-height: 45vh;
-  overflow-y: auto;
-  width: 100vw;
-  /* below is for wider screens!!! */
-  /* display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-end; */
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.tester {
-  background-color: orange; 
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  width: 100%;
+  align-items: center;
 }
 
 .App-header {
@@ -65,30 +31,87 @@ body {
 }
 
 .App-header2 {
-position:fixed; 
+position: fixed; 
+text-align:center;
 top:20%;
 width: 100%;
-  height: 20%;
-  min-height: 20%;
-  max-height: 20%;
-  z-index: 1;
+  height: 30%;
+  min-height: 30%;
+  max-height: 30%;
+  z-index: 0;
   align-items: center;
   justify-content: center;
 }
 
-.button {
+.content {
+  position: fixed; 
+  top: 52%;
+  height: auto;
+  min-height: 5vh;;
+  max-height: 5vh;
+  width: 100%;
+
+  align-items: center;
+  /* width: 100vh; */
+}
+.matchmakers {
+  /* background-color: rgba(245, 157, 157, 0.904); */
+  background-color: rgb(219, 195, 195);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed; 
+  top: 59vh;
+  height: 41vh;
+  min-height: 41vh;;
+  max-height: 41vh;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1;
+  /* below is for wider screens!!! */
+  /* display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end; */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.tester {
+  background-color: rgb(245, 205, 205);
+  background-image: url(./Images/heartsRepeat.png);
+  background-repeat: initial;
+  background-blend-mode: overlay;
+}
+
+.searchAll {
   height: 5%;
+  width: 100%;
+  top: 52%;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-.displayUsers {
+.displaySingles {
     margin: auto;
     justify-content: center;
     position: fixed;
-    background-color: white;
+    background-color: rgb(250, 238, 207);
     color: black;  
     border-radius: 1px;
     border: 0;
@@ -98,8 +121,8 @@ width: 100%;
     font-size: 0.8em;
     line-height: 2em;
     text-align: center;
-    width: 55%;
-    max-height: 50%;
+    width: 45%;
+    max-height: 60%;
     height: 20%;
     overflow: auto;
     top: 60vh;
@@ -110,9 +133,23 @@ width: 100%;
     right: auto;
 }
 
+.displaySingles li{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
 .copyright {
   position: fixed;
   bottom: 0;
+}
+
+.xButton {
+  position: fixed; 
+  /* work on the above! */
+  right: 0;
+  top: 0;
+  border-color: rgb(160, 7, 7);
 }
 
 @keyframes App-logo-spin {

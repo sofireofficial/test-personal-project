@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import Search from "./Components/Search";
 
-// SERVICES THAT CALL OUR API ENDPOINTS
-// BELOW COMMUNICATES WITH SERVER
+// SERVICES THAT CALL OUR API ENDPOINTS / communicates with server
 import { getAllMatchmakers } from "./services/matchmakerService";
-import { getAllUsersByLocation } from "./services/userService";
+import { getAllSingles, getAllSinglesByLocation } from "./services/singleService";
 import Title from "./Components/Title"
 import LogoPic from "./Components/LogoPic";
 import Matchmaker from "./Components/Matchmaker";
@@ -14,15 +13,20 @@ function App() {
 
   // const [filter, setFilter] = useState('all');
   const [matchmakers, setMatchmakers] = useState(null);
-  const [users, setUsers] = useState(null);
+  const [singles, setSingles] = useState(null);
 
   async function getLocation(location) {
-    const response = await getAllUsersByLocation(location)
-    setUsers(response) //updating users' stae var from response from server 
+    const response = await getAllSinglesByLocation(location)
+    setSingles(response) //updating users' state var from response from server 
+  }
+
+  async function getAll() {
+    const response = await getAllSingles()
+    setSingles(response) //updating users' state var from response from server 
   }
 
 
-  useEffect(() => { //see as a side effect (once app.js renders)
+  useEffect(() => { //like a side effect (once app.js renders)
     async function getMatchmakers() {
       if (!matchmakers) {
         const response = await getAllMatchmakers();
@@ -38,6 +42,7 @@ function App() {
   return (
     <div>
     <div className="container">
+      
       <div className="App-header">
         <Title />
       </div>
@@ -46,30 +51,36 @@ function App() {
         <LogoPic /> 
       </div>
 
-      <div className="button">
-        <button style={{backgroundColor:"rgb(160, 7, 7)"}}>alllll users<br /></button>
+{/* Andy's help!! Whoop whoop*/}
+<div>
+    {singles != null ? (<div className="displaySingles">{singles.length > 0 ? (
+            <div>
+            <button onClick={ () => setSingles(null) } className="xButton">X</button>
+              <ul>
+              {singles.map((single) => { return <li>{single.first_name} {single.last_name.toUpperCase()}</li>})}</ul>
+            </div>
+) : (
+          <p>🔍❤️</p>
+        )} 
+      </div>) : null}
+</div>
+  
+    <div className="content">
+      <div className="searchAll">
+        <button
+          onClick={ () => setSingles(getAll())}
+          >
+          All singles
+        </button>
         <Search />
         <br />
       </div>
 
-{/* Andy's help!! Whoop whoop*/}
-    {users != null ? (<div className="displayUsers">{users.length > 0 ? (
-            <ul>{users.map((user) => { return <li>{user.first_name} {user.last_name.toUpperCase()}</li>})}</ul>
-) : (
-          <p>No users found</p>
-        )} 
-      </div>) : null}
-    
-    {/* onClick={() => setFilter('London')  */}
-    {/* onClick={users.map((user) => renderUser(user)} */}
-  
-    <div>
       <ul className="matchmakers">
         {matchmakers && matchmakers.length > 0 ? (
-          // profiles.filter((profile) => profile.team_name === 'Cupid' ).map((profile) => renderProfile(profile))
           matchmakers.map((matchmaker) => <Matchmaker matchmaker={matchmaker} getLocation={getLocation} />)
         ) : (
-          <p>No Matchmakers found</p>
+          <p>🔍❤️</p>
         )}      
       </ul>
       </div>

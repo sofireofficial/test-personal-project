@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 
 // IMPORT YOUR SCHEMAS HERE
 require("./models/Matchmakers"); //This is just an example. Don't forget to delete this
-require("./models/Users");
+require("./models/Singles");
 const app = express();
 
 // This is where your API is making its initial connection to the database
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 // It's importing and using everything from the profilesRoutes.js file and also passing app as a parameter for profileRoutes to use
 require("./routes/matchmakersRoutes")(app); 
 
-require("./routes/usersRoutes")(app); 
+require("./routes/singlesRoutes")(app); 
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

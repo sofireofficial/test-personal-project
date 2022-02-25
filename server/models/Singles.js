@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const singleSchema = new Schema({
     first_name: String,
     last_name: String,
     location: String,
@@ -11,4 +11,4 @@ const userSchema = new Schema({
     seeking: String,
 });
 
-mongoose.model("users", userSchema);
+mongoose.model("singles", singleSchema);

@@ -3,10 +3,10 @@ import React from 'react';
 
 const Matchmaker = ({matchmaker, getLocation}) => {
     return (
-              <li className="tester" key={matchmaker._id}>
-                <h3>
+              <li className="tester" key={matchmaker._id} style={{fontWeight:"bold"}}>
+                <h2>
                   {`${matchmaker.matchmaker_name.toUpperCase()}`} 
-                </h3>
+                </h2>
                 <p>{`(${matchmaker.location} based)`}</p>
                 <button style={{borderColor:"rgb(160, 7, 7)"}} onClick={() => getLocation(matchmaker.location)}>Singles</button>
               </li>
